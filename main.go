@@ -8,7 +8,7 @@ import (
 )
 
 func main() {
-	spawn("echo","-e", "Hello World!")
+	spawnProcess("echo","-e", "Hello World!")
 }
 
 
@@ -16,9 +16,9 @@ func spawnProcess(arg string, args ...string) {
 	if len(args) == 0 {
 		return
 	}
-	switch args[0] {
+	switch arg {
 	case "run":
-		run(arg, args[0:])
+		run(args[0], args[1:])
 	case "proc":
 		proc(args[0], args[1:])
 	default:
@@ -49,5 +49,4 @@ func proc(arg string, args ...string) {
         cmd.Stdout = os.Stdout
         cmd.Stderr = os.Stderr
         cmd.Run()
-
 }
